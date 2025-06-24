@@ -16,5 +16,11 @@ RUN pip install --no-cache-dir -r requirements.txt
 COPY . .
 
 # 5. Expose port and default command
+# EXPOSE 8000
+# CMD ["python", "manage.py", "runserver", "0.0.0.0:8000"]
+# 5. Expose port and default CMD
 EXPOSE 8000
-CMD ["python", "manage.py", "runserver", "0.0.0.0:8000"]
+
+# Replace the CMD with our launcher
+COPY start.sh /start.sh
+ENTRYPOINT ["/start.sh"]
