@@ -1,9 +1,16 @@
 # crawler/urls.py
 
-from rest_framework.routers import DefaultRouter
-from .views import CrawlJobViewSet
+from django.urls import path, include
+from rest_framework.routers import SimpleRouter
 
-router = DefaultRouter()
-router.register(r'jobs', CrawlJobViewSet, basename='crawljob')
+from .views import CrawlJobViewSet, SyncCrawlAPIView
 
-urlpatterns = router.urls
+router = SimpleRouter()
+router.register(r'jobs', CrawlJobViewSet, basename='job')
+
+urlpatterns = [
+    # our new sync endpoint:
+    path('sync-jobs/', SyncCrawlAPIView.as_view(), name='sync-crawl'),
+    # the old async/Celery-backed router:
+    path('', include(router.urls)),
+]
