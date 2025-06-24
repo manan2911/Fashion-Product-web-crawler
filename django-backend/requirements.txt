@@ -6,3 +6,6 @@ aiohttp
 tldextract
 beautifulsoup4
 python-dotenv
+dj-database-url==3.0.0
+whitenoise==6.9.0
+whitenoise==6.9.0
