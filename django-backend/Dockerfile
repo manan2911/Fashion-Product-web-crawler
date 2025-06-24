@@ -13,15 +13,16 @@ COPY requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt
 
 # 4. Copy project files
-COPY start.sh /start.sh
-ENTRYPOINT ["/start.sh"]
 
-# 5. Expose port and default command
-# EXPOSE 8000
-# CMD ["python", "manage.py", "runserver", "0.0.0.0:8000"]
-# 5. Expose port and default CMD
+WORKDIR /code
+COPY requirements.txt .
+RUN pip install --no-cache-dir -r requirements.txt
+
+# copy everything
+COPY . .
+
+# change into your Django project subfolder
+WORKDIR /code/backend
+
 EXPOSE 8000
-
-# Replace the CMD with our launcher
-COPY start.sh /start.sh
-ENTRYPOINT ["/start.sh"]
+CMD ["gunicorn", "backend.wsgi:application", "--bind", "0.0.0.0:8000", "--log-level", "info"]
