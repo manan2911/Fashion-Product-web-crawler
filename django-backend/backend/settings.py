@@ -80,6 +80,9 @@ TEMPLATES = [
 # Static & Media
 STATIC_URL = '/static/'
 
+# Celery: Run tasks eagerly in development (when DEBUG is True)
+CELERY_TASK_ALWAYS_EAGER = True
+
 # Celery
 CELERY_BROKER_URL = os.getenv('CELERY_BROKER_URL')
 CELERY_RESULT_BACKEND = os.getenv('CELERY_BROKER_URL')
