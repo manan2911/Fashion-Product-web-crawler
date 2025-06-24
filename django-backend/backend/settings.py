@@ -11,7 +11,16 @@ load_dotenv('.env')
 
 SECRET_KEY = os.getenv('DJANGO_SECRET_KEY', 'replace-this')
 DEBUG = os.getenv('DEBUG', 'True') == 'True'
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = [
+    "127.0.0.1",
+    "localhost",
+    "fashion-product-web-crawler.onrender.com",
+]
+
+# CSRF must trust your frontend origin
+CSRF_TRUSTED_ORIGINS = [
+    "https://fashion-product-web-crawler.onrender.com",
+]
 CELERY_BROKER_URL = os.getenv('CELERY_BROKER_URL', 'redis://localhost:6379/0')
 CELERY_RESULT_BACKEND = os.getenv('CELERY_RESULT_BACKEND', CELERY_BROKER_URL)
 
