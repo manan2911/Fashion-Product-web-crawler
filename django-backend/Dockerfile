@@ -13,7 +13,8 @@ COPY requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt
 
 # 4. Copy project files
-COPY . .
+COPY start.sh /start.sh
+ENTRYPOINT ["/start.sh"]
 
 # 5. Expose port and default command
 # EXPOSE 8000
