@@ -156,29 +156,8 @@ python manage.py dumpdata crawler.ProductURL --format=csv --output=product_urls.
 
 A short Loom walkthrough explaining the code structure, crawler logic, and API usage:
 
-👉 **Watch on Loom**: [https://loom.com/share/your-video-url](https://loom.com/share/your-video-url)
+👉 **Watch on Loom**: [https://www.loom.com/share/e57515d61cf649dfacc400c70b7591d1?sid=3663fa34-6889-4460-acbe-7ffb5b8b50b0](https://www.loom.com/share/e57515d61cf649dfacc400c70b7591d1?sid=3663fa34-6889-4460-acbe-7ffb5b8b50b0)
 
 ---
 
-## Directory Structure
-
-```
-mycrawler/
-├── backend/                      # Django project
-│   ├── backend/                  # project settings
-│   ├── crawler/                  # core app (models, views, tasks)
-│   ├── manage.py
-│   ├── celery.py                 # Celery config
-│   └── requirements.txt
-├── crawler_worker.py            # standalone CLI crawler
-├── docker-compose.yaml
-├── .env.example
-└── README.md
-```
-
----
-
-## License
-
-This project is released under the MIT License. Feel free to reuse and adapt!
 
